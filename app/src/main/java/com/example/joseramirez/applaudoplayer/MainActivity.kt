@@ -1,37 +1,79 @@
 package com.example.joseramirez.applaudoplayer
 
-import android.content.res.Configuration
-import android.media.MediaPlayer
+import android.annotation.TargetApi
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
+import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.os.IBinder
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 
+@TargetApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mediaPlayer: MediaPlayer
-    lateinit var btnPlay    : Button
-    lateinit var btnPause   : Button
+    lateinit var btnPlay: Button
+    lateinit var btnPause: Button
+    private lateinit var btnDetails: Button
 
+    private lateinit var audioService: MyAudioService
+    private var bound: Boolean = false
+
+
+    private val connection = object : ServiceConnection {
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun onServiceConnected(className: ComponentName, service: IBinder) {
+            val binder = service as MyAudioService.LocalBinder
+            audioService = binder.getService()
+            bound = true
+        }
+
+        override fun onServiceDisconnected(arg0: ComponentName) {
+            bound = false
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnPlay = findViewById(R.id.btnPlay)
         btnPause = findViewById(R.id.btnPause)
+        btnDetails = findViewById(R.id.detailsbtn)
 
-        mediaPlayer = MediaPlayer.create(this ,R.raw.eminem)
+        Intent(this, MyAudioService::class.java).also { intent ->
+            bindService(intent, connection, Context.BIND_AUTO_CREATE)
+        }
 
         btnPlay.setOnClickListener {
-            mediaPlayer.start()
+            if (bound) {
+                audioService.createPlayer()
+            }
         }
 
         btnPause.setOnClickListener {
-            mediaPlayer.pause()
+            if (bound) {
+                audioService.pausePlayer()
+            }
+        }
+
+        btnDetails.setOnClickListener {
+            val intentDetails = Intent(this, DetailsActivity::class.java)
+            startActivity(intentDetails)
         }
     }
-    
 
-
+    override fun onDestroy() {
+        if (bound) {
+            unbindService(connection)
+        }
+        super.onDestroy()
+    }
 
 
 }
