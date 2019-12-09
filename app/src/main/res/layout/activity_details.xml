@@ -9,6 +9,7 @@
         tools:context=".DetailsActivity">
 
     <ImageView android:layout_width="match_parent"
+               android:contentDescription="@string/mileEight"
                android:layout_height="wrap_content"
                android:src="@drawable/image_eight"
                android:scaleType="centerCrop"
