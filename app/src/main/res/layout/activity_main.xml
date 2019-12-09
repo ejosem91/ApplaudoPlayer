@@ -45,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnPlay"
             app:layout_constraintStart_toStartOf="parent"
-            android:drawableLeft="@drawable/ic_stat_name"
+            android:drawableLeft="@drawable/ic_info"
             android:text="@string/deatils"/>
 
 </android.support.constraint.ConstraintLayout>
