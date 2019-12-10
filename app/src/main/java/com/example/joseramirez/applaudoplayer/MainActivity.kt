@@ -1,6 +1,7 @@
 package com.example.joseramirez.applaudoplayer
 
 import android.annotation.TargetApi
+import android.app.NotificationManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -14,6 +15,7 @@ import android.widget.Button
 
 @TargetApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
+    lateinit var notificationManager: NotificationManager
 
     lateinit var btnPlay: Button
     lateinit var btnPause: Button
@@ -45,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         btnPlay = findViewById(R.id.btnPlay)
         btnPause = findViewById(R.id.btnPause)
         btnDetails = findViewById(R.id.detailsbtn)
+
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         Intent(this, MyAudioService::class.java).also { intent ->
             bindService(intent, connection, Context.BIND_AUTO_CREATE)
