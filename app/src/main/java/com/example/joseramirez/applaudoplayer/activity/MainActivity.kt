@@ -1,7 +1,6 @@
 package com.example.joseramirez.applaudoplayer.activity
 
 import android.annotation.TargetApi
-import android.app.NotificationManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -17,7 +16,6 @@ import com.example.joseramirez.applaudoplayer.service.MyAudioService
 
 @TargetApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
-    lateinit var notificationManager: NotificationManager
 
     lateinit var btnPlay: Button
     lateinit var btnPause: Button
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var audioService: MyAudioService
     private var bound: Boolean = false
 
-
+    //Connection service
     private val connection = object : ServiceConnection {
 
         @RequiresApi(Build.VERSION_CODES.O)
@@ -41,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,27 +47,30 @@ class MainActivity : AppCompatActivity() {
         btnPause = findViewById(R.id.btnPause)
         btnDetails = findViewById(R.id.detailsbtn)
 
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        Intent(this, MyAudioService::class.java).also { intent ->
-            bindService(intent, connection, Context.BIND_AUTO_CREATE)
-        }
-
+        createIntent()
+        // listener  for Play Music
         btnPlay.setOnClickListener {
             if (bound) {
                 audioService.createPlayer()
             }
         }
-
+        // listener  for Pause Music
         btnPause.setOnClickListener {
             if (bound) {
                 audioService.pausePlayer()
             }
         }
-
+        //Listener for new activity Details
         btnDetails.setOnClickListener {
             val intentDetails = Intent(this, DetailsActivity::class.java)
             startActivity(intentDetails)
+        }
+    }
+
+    //Method intent for service
+    private fun createIntent(){
+        Intent(this, MyAudioService::class.java).also { intent ->
+            bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }
     }
 
@@ -80,6 +80,5 @@ class MainActivity : AppCompatActivity() {
         }
         super.onDestroy()
     }
-
 
 }
