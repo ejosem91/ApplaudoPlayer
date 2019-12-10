@@ -13,7 +13,7 @@
             android:text="@string/play"
             android:background="@android:color/black"
             android:textColor="@color/canaryYellow"
-            android:drawableLeft="@drawable/ic_play"
+            android:drawableStart= "@drawable/ic_play"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,12 +24,11 @@
             android:layout_height="wrap_content"
             android:text="@string/pause"
             android:id="@+id/btnPause"
-            android:drawableLeft="@drawable/ic_pause"
+            android:drawableStart="@drawable/ic_pause"
             android:background="@android:color/black"
             android:textColor="@color/canaryYellow"
             app:layout_constraintStart_toEndOf="@+id/btnPlay"
             android:padding="10dp"
-
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -45,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnPlay"
             app:layout_constraintStart_toStartOf="parent"
-            android:drawableLeft="@drawable/ic_info"
+            android:drawableStart="@drawable/ic_info"
             android:text="@string/deatils"/>
 
 </android.support.constraint.ConstraintLayout>
