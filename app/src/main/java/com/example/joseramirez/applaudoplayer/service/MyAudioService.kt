@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.example.joseramirez.applaudoplayer
+package com.example.joseramirez.applaudoplayer.service
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,6 +15,7 @@ import android.os.Build
 import android.os.IBinder
 import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
+import com.example.joseramirez.applaudoplayer.R
 
 class MyAudioService : Service() {
 
@@ -82,7 +83,9 @@ class MyAudioService : Service() {
             PendingIntent.getService(this, 0, pauseIntent, 0)
 
 
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(this,
+            CHANNEL_ID
+        )
             .setSmallIcon(R.drawable.ic_info)
             .setContentTitle(NAME)
             .setContentText(SONG)

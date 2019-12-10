@@ -1,7 +1,8 @@
-package com.example.joseramirez.applaudoplayer
+package com.example.joseramirez.applaudoplayer.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.joseramirez.applaudoplayer.R
 
 class DetailsActivity : AppCompatActivity() {
 

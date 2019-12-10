@@ -1,4 +1,4 @@
-package com.example.joseramirez.applaudoplayer
+package com.example.joseramirez.applaudoplayer.activity
 
 import android.annotation.TargetApi
 import android.app.NotificationManager
@@ -12,6 +12,8 @@ import android.os.IBinder
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
+import com.example.joseramirez.applaudoplayer.R
+import com.example.joseramirez.applaudoplayer.service.MyAudioService
 
 @TargetApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
