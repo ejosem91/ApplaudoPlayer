@@ -17,8 +17,8 @@ import com.example.joseramirez.applaudoplayer.service.MyAudioService
 @TargetApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
 
-    lateinit var btnPlay: Button
-    lateinit var btnPause: Button
+    private lateinit var btnPlay: Button
+    private lateinit var btnPause: Button
     private lateinit var btnDetails: Button
 
     private lateinit var audioService: MyAudioService
