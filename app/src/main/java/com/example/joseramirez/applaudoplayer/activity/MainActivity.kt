@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btnPlay = findViewById(R.id.btnPlay)
-        btnPause = findViewById(R.id.btnPause)
-        btnDetails = findViewById(R.id.detailsbtn)
+        btnPlay = findViewById(R.id.btn_play)
+        btnPause = findViewById(R.id.btn_pause)
+        btnDetails = findViewById(R.id.btn_details)
 
         createIntent()
         // listener  for Play Music

@@ -12,18 +12,18 @@
                android:contentDescription="@string/mileEight"
                android:layout_height="match_parent"
                android:src="@drawable/image_eight"
-               android:id="@+id/imageView"
+               android:id="@+id/iv_detail"
                android:scaleType="centerCrop"
                app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView android:layout_width="0dp"
               android:layout_height="match_parent"
               android:text="@string/aboutSong"
-              android:id="@+id/aboutSongTv"
+              android:id="@+id/tv_about_song"
               android:layout_margin="10dp"
               android:textStyle="bold"
               android:layout_marginTop="40dp"
               android:layout_marginBottom="40dp"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toEndOf="@+id/imageView" app:layout_constraintHorizontal_bias="0.5"/>
+              app:layout_constraintStart_toEndOf="@+id/iv_detail" app:layout_constraintHorizontal_bias="0.5"/>
 </android.support.constraint.ConstraintLayout>
