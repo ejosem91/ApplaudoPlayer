@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         btnPause = findViewById(R.id.btn_pause)
         btnDetails = findViewById(R.id.btn_details)
 
-        createIntent()
+        createServiceIntent()
         // listener  for Play Music
         btnPlay.setOnClickListener {
             if (bound) {
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Method intent for service
-    private fun createIntent(){
+    private fun createServiceIntent(){
         Intent(this, MyAudioService::class.java).also { intent ->
             bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }
