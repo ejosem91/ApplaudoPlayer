@@ -17,8 +17,8 @@ import com.example.joseramirez.applaudoplayer.service.MyAudioService
 @TargetApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
 
-    lateinit var btnPlay: Button
-    lateinit var btnPause: Button
+    private lateinit var btnPlay: Button
+    private lateinit var btnPause: Button
     private lateinit var btnDetails: Button
 
     private lateinit var audioService: MyAudioService
@@ -43,11 +43,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btnPlay = findViewById(R.id.btnPlay)
-        btnPause = findViewById(R.id.btnPause)
-        btnDetails = findViewById(R.id.detailsbtn)
+        btnPlay = findViewById(R.id.btn_play)
+        btnPause = findViewById(R.id.btn_pause)
+        btnDetails = findViewById(R.id.btn_details)
 
-        createIntent()
+        createServiceIntent()
         // listener  for Play Music
         btnPlay.setOnClickListener {
             if (bound) {
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Method intent for service
-    private fun createIntent(){
+    private fun createServiceIntent(){
         Intent(this, MyAudioService::class.java).also { intent ->
             bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }

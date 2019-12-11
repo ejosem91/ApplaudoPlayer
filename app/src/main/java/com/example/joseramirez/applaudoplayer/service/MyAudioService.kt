@@ -19,6 +19,10 @@ import com.example.joseramirez.applaudoplayer.R
 
 class MyAudioService : Service() {
 
+    /** TODO: After migrating to androidx, use NotificationManagerCompat
+     * We need to avoid targeting specific versions (@RequiresApi(Build.VERSION_CODES.O))
+     * or in the worst case, provide an alternate scenario.
+     */
     private lateinit var notificationManager: NotificationManager
     private val binder = LocalBinder()
     private var mediaPlayer: MediaPlayer? = null
